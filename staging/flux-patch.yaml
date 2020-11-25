@@ -19,3 +19,17 @@ spec:
       initContainers:
       - image: alpine:3
         name: init
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo-dep4
+  namespace: demo
+spec:
+  template:
+    spec:
+      $setElementOrder/containers:
+      - name: podinfod
+      containers:
+      - image: stefanprodan/podinfo:4.0.4
+        name: podinfod
